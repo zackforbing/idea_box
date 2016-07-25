@@ -1,15 +1,17 @@
-<h1>Welcome, <%= @user.username %>!</h1>
-<% if @user.ideas.count == 0 %>
-  <h3>It doesn't look like you've created any ideas yet!<br>
-  You should fix that.</h3>
-<% else %>
-  <%= @user.ideas.each do |idea| %>
-    <%= idea.images.each do |img| %>
-        <img src="<%= img.url %>">
-    <% end %><br>
-    <%= link_to idea.name, user_idea_path  %>
+<div class="text-center">
+  <h1>Welcome, <%= @user.username %>!</h1>
+  <% if @user.ideas.count == 0 %>
+    <h3>It doesn't look like you've created any ideas yet!<br>
+    You should fix that.</h3>
+  <% else %>
+    <%= @user.ideas.each do |idea| %>
+      <%= idea.images.each do |img| %>
+          <img src="<%= img.url %>">
+      <% end %><br>
+      <%= link_to idea.name, user_idea_path  %>
+    <% end %>
   <% end %>
-<% end %>
-<br>
-<%= link_to "Create New Idea", new_user_idea_path %>
-<%= link_to "Log Out", logout_path, method: :delete %>
+  <br>
+  <%= link_to "Create New Idea", new_user_idea_path(@user) %>
+  <%= link_to "Log Out", logout_path, method: :delete %>
+</div>

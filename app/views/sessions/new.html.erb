@@ -1,7 +1,8 @@
+<div class="text-center">
 <h1>Log In</h1>
-
-<%= form_for(:session, login_path) do |f| %>
+<%= form_for(:session, url: login_path) do |f| %>
   <%= f.text_field :username, placeholder: "User Name" %>
   <%= f.password_field :password, placeholder: "Password" %>
   <%= f.submit "Log In" %>
 <% end %>
+</div>
