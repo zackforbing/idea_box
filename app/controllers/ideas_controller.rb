@@ -1,11 +1,13 @@
 class IdeasController < ApplicationController
-  before_action :set_user, only: [:new, :create]
+  # before_action :set_user, only: [:new, :create]
 
   def new
+    @user = User.find(session[:user_id])
     @idea = @user.ideas.new
   end
 
   def create
+    @user = User.find(session[:user_id])
     @idea = @user.ideas.create(idea_params)
 
     redirect_to user_idea_path(@idea)
